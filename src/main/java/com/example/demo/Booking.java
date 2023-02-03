@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Booking {
 	@Id
-	@GeneratedValue
 	int id;
 	String name;
 	public int getId() {

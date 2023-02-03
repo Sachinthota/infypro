@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,18 +18,23 @@ public class Controller {
 	@Autowired
 	Jpa j;
 		
-	@GetMapping
-	public int S() {
-		return 1;
-	}
-	@PostMapping("/createbooking")
+	@PostMapping(path="/createbooking",consumes = "application/json")
 	public String sm(@RequestBody Booking s)
 	{
+		Random d=new Random();
+	    s.setId(d.nextInt(10000));
 		j.save(s);
-      return "Booking done successfully, Booking id is:"+s.getId();
+		if(j.existsById(s.getId()))
+	    {
+			  return "Booking done successfully, Booking id is:"+s.getId();
+	    }else {
+	    	return "Somthing went wrong please try again";
+	    	
+	    }
+    
 
 	}
-	@GetMapping("/view")
+	@GetMapping(path="/view",produces = "application/json")
 	public List Sm() {
 		if(j.findAll().isEmpty()) {
 			List<String> r=new ArrayList<>();
