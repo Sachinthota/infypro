@@ -25,7 +25,7 @@ public class Controller {
 	public String sm(@RequestBody Booking s)
 	{
 		j.save(s);
-      return "Booking done successfully, booking id is:"+s.getId();
+      return "Booking done successfully, Booking id is:"+s.getId();
 
 	}
 	@GetMapping("/view")
