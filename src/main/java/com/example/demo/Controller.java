@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
-	
+public class Controller 
+{
 	@Autowired
 	Jpa j;
 		
-	@PostMapping(path="/createbooking",consumes = "application/json")
+	@PostMapping(path="/CreateBooking",consumes = "application/json")
 	public String sm(@RequestBody Booking s)
 	{
+		System.out.println(s);
 		Random d=new Random();
 	    s.setId(d.nextInt(10000));
 		j.save(s);
@@ -31,30 +32,28 @@ public class Controller {
 	    	return "Somthing went wrong please try again";
 	    	
 	    }
-    
-
 	}
-	@GetMapping(path="/view",produces = "application/json")
-	public List Sm() {
+	
+	@GetMapping(path="/ViewBookings",produces = "application/json")
+	public List Sm() 
+	{
 		if(j.findAll().isEmpty()) {
+			
 			List<String> r=new ArrayList<>();
 			r.add("No Bookings yet");
 			return r;
 		}else return j.findAll();
 	}
+	
 	@DeleteMapping("Delete/{id}")
-	public String delete(@PathVariable Integer id) {
+	public String delete(@PathVariable Integer id) 
+	{
 		
 	    if(j.existsById(id))
 	    {
 	    	j.deleteById(id);	
 	    	return "Booking deleted Successfully";
-	    }else {
-	    	return "No Booking found with id "+id;
-	    	
-	    }
-	
-		
+	    }else return "No Booking found with id "+id;   
 	}
 	
 }

@@ -5,9 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class InfyproApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(InfyproApplication.class, args);
+	    System.out.println("Applications Started");
+
 	}
 
 }
