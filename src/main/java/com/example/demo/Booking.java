@@ -11,47 +11,49 @@ import jakarta.persistence.Id;
 @Entity
 public class Booking {
 	@Id
-	int id;
+	int BookingId;
 	@UpdateTimestamp
-	Date bookingdate;
-	String name;
-	String email;
-	BigInteger Mobilenumber;
-
-	public String getEmail() {
-		return email;
+	Date BookingDate;
+	String Name;
+	String Email;
+	BigInteger MobileNumber;
+	
+	public int getBookingId() {
+		return BookingId;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBookingId(int bookingId) {
+		BookingId = bookingId;
 	}
-	public BigInteger getMobilenumber() {
-		return Mobilenumber;
+	public Date getBookingDate() {
+		return BookingDate;
 	}
-	public void setMobilenumber(BigInteger mobilenumber) {
-		Mobilenumber = mobilenumber;
-	}
-	public Date getBookingdate() {
-		return bookingdate;
-	}
-	public void setBookingdate(Date bookingdate) {
-		this.bookingdate = bookingdate;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+	public void setBookingDate(Date bookingDate) {
+		BookingDate = bookingDate;
 	}
 	public String getName() {
-		return name;
+		return Name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		Name = name;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	public BigInteger getMobileNumber() {
+		return MobileNumber;
+	}
+	public void setMobileNumber(BigInteger mobileNumber) {
+		MobileNumber = mobileNumber;
 	}
 	@Override
 	public String toString() {
-		return "Booking [id=" + id + ", bookingdate=" + bookingdate + ", name=" + name + ", email=" + email
-				+ ", Mobilenumber=" + Mobilenumber + "]";
+		return "Booking [BookingId=" + BookingId + ", BookingDate=" + BookingDate + ", Name=" + Name + ", Email="
+				+ Email + ", MobileNumber=" + MobileNumber + "]";
 	}
+
+
 
 }
